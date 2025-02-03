@@ -23,23 +23,29 @@ const Form = () => {
         await trigger();
       }}
     >
-      <TextField
-        {...register('name')}
-        label={t('signup.name')}
-        variant='outlined'
-        error={!!errors.name}
-        helperText={errors.name?.message}
-        fullWidth
-      />
+      <div className='grid grid-cols-2 gap-5'>
+        <TextField
+          className='col-span-1'
+          {...register('name')}
+          label={t('signup.name')}
+          variant='outlined'
+          error={!!errors.name}
+          helperText={errors.name?.message}
+          fullWidth
+          size='small'
+        />
 
-      <TextField
-        {...register('lastname')}
-        label={t('signup.lastname')}
-        variant='outlined'
-        error={!!errors.lastname}
-        helperText={errors.lastname?.message}
-        fullWidth
-      />
+        <TextField
+          className='col-span-1'
+          {...register('lastname')}
+          label={t('signup.lastname')}
+          variant='outlined'
+          error={!!errors.lastname}
+          helperText={errors.lastname?.message}
+          fullWidth
+          size='small'
+        />
+      </div>
 
       <TextField
         {...register('email')}
@@ -48,6 +54,7 @@ const Form = () => {
         error={!!errors.email}
         helperText={errors.email?.message}
         fullWidth
+        size='small'
       />
 
       <TextField
@@ -57,6 +64,7 @@ const Form = () => {
         error={!!errors.password}
         helperText={errors.password?.message}
         fullWidth
+        size='small'
       />
 
       <TextField
@@ -66,6 +74,7 @@ const Form = () => {
         error={!!errors.username}
         helperText={errors.username?.message}
         fullWidth
+        size='small'
       />
 
       <TextField
@@ -75,10 +84,11 @@ const Form = () => {
         error={!!errors.mobile}
         helperText={errors.mobile?.message}
         fullWidth
+        size='small'
       />
 
       <Button
-        variant='contained'
+        variant='outlined'
         type='submit'
         size='large'
       >
