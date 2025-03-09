@@ -4,36 +4,37 @@ export const dark: boolean | ColorSystemOptions | undefined = {
   palette: {
     mode: 'dark',
     primary: {
-      main: '#0A58CA',
-      light: '#3A8DFF',
-      dark: '#083A8A',
+      main: '#0A84FF', // Brighter blue for a more modern look
+      light: '#58A6FF', // Soft sky blue for contrast
+      dark: '#083A8A', // Keeping the deep blue
       contrastText: '#ffffff',
     },
     error: {
-      main: '#ff4c4c',
-      light: '#ff7878',
-      dark: '#b20000',
+      main: '#FF4C4C', // Keeping the same strong red
+      light: '#FF7878', // Softer red for alerts
+      dark: '#B20000', // Deep red for warnings
       contrastText: '#ffffff',
     },
     success: {
-      main: '#00b894',
-      light: '#00e1a7',
-      dark: '#007c65',
+      main: '#00C781', // A slightly richer green
+      light: '#00E1A7', // A more vibrant tone for highlights
+      dark: '#007C65', // Deep teal
       contrastText: '#ffffff',
     },
     warning: {
-      main: '#e6a100',
-      light: '#ffcb47',
-      dark: '#9c6d00',
+      main: '#E6A100', // Gold-like yellow
+      light: '#FFCB47', // Brighter shade
+      dark: '#9C6D00', // Deep amber
       contrastText: '#000000',
     },
     background: {
-      default: '#171616',
-      paper: '#1e1e1e',
+      default: '#171717', // Even darker for a sleek look
+      paper: '#181818', // Slightly lighter for card surfaces
+      item: '#1E1E1E', // Consistent with your original item shade
     },
     text: {
-      primary: '#ffffff',
-      secondary: '#b3b3b3',
+      primary: '#E6EDF3', // Slightly softened white for better readability
+      secondary: '#A1A1A1', // Adjusted gray for better contrast
     },
   },
 };

@@ -28,22 +28,22 @@ export default async function RootLayout({
       lang={locale}
       suppressHydrationWarning
     >
-      <AppRouterCacheProvider options={{ enableCssLayer: true }}>
-        <React.Suspense fallback={<LinearProgress />}>
-          <ThemeProvider>
+      <body
+        className={`antialiased ${iranYekan.variable} ${iranYekan.className}`}
+      >
+        <InitColorSchemeScript attribute='class' />
+        <AppRouterCacheProvider options={{ enableCssLayer: true }}>
+          <React.Suspense fallback={<LinearProgress />}>
             <Rtl>
-              <body
-                className={`antialiased ${iranYekan.variable} ${iranYekan.className}`}
-              >
-                <InitColorSchemeScript attribute='class' />
+              <ThemeProvider>
                 <NextIntlClientProvider messages={messages}>
                   {children}
                 </NextIntlClientProvider>
-              </body>
+              </ThemeProvider>
             </Rtl>
-          </ThemeProvider>
-        </React.Suspense>
-      </AppRouterCacheProvider>
+          </React.Suspense>
+        </AppRouterCacheProvider>
+      </body>
     </html>
   );
 }

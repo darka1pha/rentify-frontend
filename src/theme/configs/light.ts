@@ -28,8 +28,9 @@ export const light: boolean | ColorSystemOptions | undefined = {
       contrastText: '#000000',
     },
     background: {
-      default: '#f5f5f5',
-      paper: '#ffffff',
+      default: '#E7F1FF',
+      paper: '#FFFFFF',
+      item: '#F0F5F9',
     },
     text: {
       primary: '#000000',

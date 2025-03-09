@@ -8,6 +8,19 @@ declare module '@mui/material/Button' {
     xLarge?: true;
   }
 }
+
+declare module '@mui/material/Tabs' {
+  interface TabsPropsVariantOverrides {
+    fill?: true;
+  }
+}
+
+declare module '@mui/material/styles' {
+  interface TypeBackground {
+    item?: string;
+  }
+}
+
 //#endregion
 
 const theme = createTheme({

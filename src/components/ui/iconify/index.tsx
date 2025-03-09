@@ -1,11 +1,10 @@
 'use client';
 
 import { forwardRef } from 'react';
-import { Icon } from '@iconify/react';
+import { Icon, IconProps } from '@iconify/react';
 
 import Box, { BoxProps } from '@mui/material/Box';
 import NoSsr from '@mui/material/NoSsr';
-import { IconProps } from '@mui/material';
 
 const iconifyClasses = {
   root: 'mnl__icon__root',
