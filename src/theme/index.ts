@@ -1,6 +1,7 @@
 'use client';
 import { createTheme } from '@mui/material/styles';
 import { button, dark, light, outlinedInput, typography } from './configs';
+import { paper } from './configs/paper';
 
 //#region Theme Overrides
 declare module '@mui/material/Button' {
@@ -36,6 +37,7 @@ const theme = createTheme({
   components: {
     MuiButton: button,
     MuiOutlinedInput: outlinedInput,
+    MuiPaper: paper,
   },
 });
 

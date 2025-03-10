@@ -26,10 +26,9 @@ const Form = () => {
 
   const onSubmit = async (data: signUpSchemaType) => {
     const response = await signup({ ...data, type: UserType.CUSTOMER });
-    if ('error' in response) {
-      setError(response.error.message);
+    if (!response.success) {
+      setError(response.message);
     }
-    console.log(response);
   };
 
   return (

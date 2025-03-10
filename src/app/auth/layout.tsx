@@ -1,3 +1,4 @@
+import { Logo } from '@/components/ui';
 import { Box, Paper } from '@mui/material';
 import Image from 'next/image';
 
@@ -23,14 +24,11 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
           flexDirection: 'column',
         }}
       >
-        <div className='mb-10'>
-          <Image
-            src={'/assets/images/logo.svg'}
-            height={80}
-            width={200}
-            alt='logo'
-          />
-        </div>
+        <Logo
+          height={80}
+          width={200}
+          className='mb-10'
+        />
         {children}
       </Paper>
     </div>

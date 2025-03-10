@@ -3,6 +3,7 @@ import { fetcher } from '@/lib/fetcher';
 import { API } from '../urls';
 import { signUpSchemaType } from '@/components/auth/signup/schema';
 import { UserType } from '@/lib/constants';
+import { redirect } from 'next/navigation';
 export async function refreshAccessToken(): Promise<boolean> {
   try {
     const response = await fetch(`${API.BASE_URL}/auth/refresh`, {
@@ -26,12 +27,20 @@ export const signup = async (
   formData: signUpSchemaType & { type: UserType; agency?: string }
 ) => {
   const agency = formData.agency ?? '';
-  const response = await fetcher<
-    { accessToken: string; message: string } | { error: { message: string } }
-  >(API.SIGNUP, {
+  const response = await fetcher<{
+    accessToken: string;
+    message: string;
+    success: boolean;
+  }>(API.SIGNUP, {
     method: 'POST',
     body: JSON.stringify({ ...formData, agency }),
   });
+  if (response.success) {
+    // set access token
+    const { cookies } = await import('next/headers');
+    (await cookies()).set('access-token', response.accessToken);
+    redirect('/');
+  }
   return response;
 };
 

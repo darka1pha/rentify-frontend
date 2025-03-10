@@ -46,8 +46,7 @@ export async function fetcher<T>(
           console.error(url);
           throw new Error('Not Found');
         case 409:
-          // console.error(error);
-          return { error } as unknown as T;
+          return error;
         case 500:
           throw new Error('Internal Server Error');
       }
