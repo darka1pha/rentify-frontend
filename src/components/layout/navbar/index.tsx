@@ -1,21 +1,23 @@
 'use client';
 
-import { useScroll, useMotionValueEvent, motion } from 'motion/react';
-import { Box, Paper } from '@mui/material';
+import { useScroll, useMotionValueEvent } from 'motion/react';
+import { Box, Button, Paper } from '@mui/material';
 import { useState } from 'react';
-import { Logo } from '@/components/ui';
+import { Iconify, Logo, ThemeSwitch } from '@/components/ui';
+import { useTranslations } from 'next-intl';
 
 const Navbar = () => {
   const { scrollY } = useScroll();
   const [scrolled, setScrolled] = useState(false);
+  const t = useTranslations('home');
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
-    setScrolled(latest > 36); // Change state when scrolling past 100px
+    setScrolled(latest > 36);
   });
 
   return (
-    <Box className='px-24 pt-10 fixed w-full z-50'>
-      <Paper
+    <Box className='px-24 pt-10 fixed w-full z-50 flex items-center justify-between'>
+      <Box
         sx={{
           p: 3,
           backgroundColor: scrolled ? 'auto' : 'transparent',
@@ -24,7 +26,23 @@ const Navbar = () => {
         }}
       >
         <Logo />
-      </Paper>
+      </Box>
+      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+        <ThemeSwitch />
+        <Button
+          endIcon={
+            <Iconify
+              sx={{ mr: 2 }}
+              icon='solar:add-square-line-duotone'
+              width={24}
+              height={24}
+            />
+          }
+          variant='contained'
+        >
+          {t('addNew')}
+        </Button>
+      </Box>
     </Box>
   );
 };

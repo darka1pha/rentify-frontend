@@ -29,6 +29,7 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <body
+        dir='rtl'
         className={`antialiased ${iranYekan.variable} ${iranYekan.className}`}
       >
         <InitColorSchemeScript attribute='class' />
