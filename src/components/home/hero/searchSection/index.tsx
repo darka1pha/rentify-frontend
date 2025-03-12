@@ -1,4 +1,5 @@
 'use client';
+
 import { Iconify } from '@/components/ui';
 import {
   Button,
@@ -9,110 +10,92 @@ import {
   Select,
   Typography,
 } from '@mui/material';
+import { useTranslations } from 'next-intl';
 
 const SearchSection = () => {
+  const t = useTranslations('home');
+
   return (
-    <div className='flex flex-col gap-8 w-full items-center'>
-      <span className='flex items-center gap-2'>
-        <Typography
-          variant='h3'
-          color='white'
-          fontWeight={'bold'}
-        >
-          در
-        </Typography>
-        <Typography
-          variant='h3'
-          color='primary'
-          fontWeight={'bold'}
-        >
-          رنتیفای
-        </Typography>
-        <Typography
-          variant='h3'
-          color='white'
-          fontWeight={'bold'}
-        >
-          دنبال چه ملکی هستی
-        </Typography>
+    <div className='flex flex-col gap-8 w-full items-center px-5 md:px-10 xl:px-24'>
+      <span className='flex flex-wrap justify-center items-center gap-2 text-center'>
+        {[
+          { text: 'در', color: 'white' },
+          { text: 'رنتیفای', color: 'primary' },
+          { text: 'دنبال چه ملکی هستی؟', color: 'white' },
+        ].map(({ text, color }, index) => (
+          <Typography
+            key={index}
+            variant='h3'
+            color={color}
+            fontWeight='bold'
+          >
+            {text}
+          </Typography>
+        ))}
       </span>
       <Paper
         sx={{
-          height: 104,
-          borderRadius: 40,
+          height: { xs: 'auto', sm: 80 },
+          borderRadius: { xs: 4, sm: 40 },
           maxWidth: 900,
           width: '100%',
           overflow: 'hidden',
           display: 'flex',
-          justifyContent: 'end',
+          flexDirection: { xs: 'column', sm: 'row' },
+          alignItems: 'center',
+          justifyContent: 'center',
+          p: { xs: 2, sm: 0 },
         }}
       >
-        <div className='h-full flex items-center flex-1 px-10 justify-center gap-12'>
-          <FormControl
-            variant='standard'
-            sx={{ m: 1, minWidth: 120 }}
-          >
-            <InputLabel id='demo-simple-select-standard-label'>سن</InputLabel>
-            <Select
-              labelId='demo-simple-select-standard-label'
-              id='demo-simple-select-standard'
-              label='Age'
+        <div className='w-full flex flex-wrap justify-center items-center gap-4 sm:gap-6 px-4 sm:px-10'>
+          {[
+            {
+              label: t('search.location'),
+              options: ['تهران', 'شیراز', 'بندرعباس'],
+            },
+            { label: t('search.type'), options: ['آپارتمان', 'ویلا'] },
+            { label: t('search.contract'), options: ['رهن', 'اجاره'] },
+          ].map(({ label, options }, index) => (
+            <FormControl
+              key={index}
+              variant='standard'
+              sx={{ minWidth: 110, flex: '1 1 auto', maxWidth: '100%' }}
             >
-              <MenuItem value=''>
-                <em>None</em>
-              </MenuItem>
-              <MenuItem value={20}>بیست</MenuItem>
-              <MenuItem value={30}>سی</MenuItem>
-              <MenuItem value={40}>چهل</MenuItem>
-            </Select>
-          </FormControl>
-          <FormControl
-            variant='standard'
-            sx={{ m: 1, minWidth: 120 }}
-          >
-            <InputLabel id='demo-simple-select-standard-label'>سن</InputLabel>
-            <Select
-              labelId='demo-simple-select-standard-label'
-              id='demo-simple-select-standard'
-              label='Age'
-            >
-              <MenuItem value=''>
-                <em>None</em>
-              </MenuItem>
-              <MenuItem value={20}>بیست</MenuItem>
-              <MenuItem value={30}>سی</MenuItem>
-              <MenuItem value={40}>چهل</MenuItem>
-            </Select>
-          </FormControl>
-          <FormControl
-            variant='standard'
-            sx={{ m: 1, minWidth: 120 }}
-          >
-            <InputLabel id='demo-simple-select-standard-label'>سن</InputLabel>
-            <Select
-              labelId='demo-simple-select-standard-label'
-              id='demo-simple-select-standard'
-              label='Age'
-            >
-              <MenuItem value=''>
-                <em>None</em>
-              </MenuItem>
-              <MenuItem value={20}>بیست</MenuItem>
-              <MenuItem value={30}>سی</MenuItem>
-              <MenuItem value={40}>چهل</MenuItem>
-            </Select>
-          </FormControl>
+              <InputLabel shrink>{label}</InputLabel>
+              <Select
+                sx={{
+                  '& .MuiSelect-icon': { top: '-20px' },
+                }}
+              >
+                <MenuItem value=''>
+                  <em>هیچکدام</em>
+                </MenuItem>
+                {options.map((option, idx) => (
+                  <MenuItem
+                    key={idx}
+                    value={option}
+                  >
+                    {option}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          ))}
         </div>
+
+        {/* Search Button */}
         <Button
-          sx={{ height: '100%', maxWidth: 158, width: '100%' }}
-          onClick={() => console.log('aklsjdh')}
+          sx={{
+            height: { xs: 50, sm: '100%' },
+            width: { xs: '100%', sm: 80 },
+            borderRadius: { xs: '20px', sm: 0 },
+            mt: { xs: 2, sm: 0 },
+          }}
           variant='contained'
           startIcon={
             <Iconify icon={'solar:minimalistic-magnifer-line-duotone'} />
           }
-        >
-          جستجو
-        </Button>
+        />
       </Paper>
     </div>
   );

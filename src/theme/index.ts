@@ -2,7 +2,6 @@
 import { createTheme } from '@mui/material/styles';
 import { button, dark, light, outlinedInput, typography } from './configs';
 import { paper } from './configs/paper';
-
 //#region Theme Overrides
 declare module '@mui/material/Button' {
   interface ButtonPropsSizeOverrides {
@@ -19,6 +18,9 @@ declare module '@mui/material/Tabs' {
 declare module '@mui/material/styles' {
   interface TypeBackground {
     item?: string;
+  }
+  interface TypeText {
+    gray?: string;
   }
 }
 

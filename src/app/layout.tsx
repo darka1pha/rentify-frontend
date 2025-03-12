@@ -10,6 +10,7 @@ import Rtl from '@/theme/rtl';
 import { iranYekan } from '@/theme/fonts';
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
+import Script from 'next/script';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -44,6 +45,7 @@ export default async function RootLayout({
             </Rtl>
           </React.Suspense>
         </AppRouterCacheProvider>
+        <Script src='https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js' />
       </body>
     </html>
   );

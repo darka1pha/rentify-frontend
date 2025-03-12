@@ -20,28 +20,33 @@ const Navbar = () => {
       <Box
         sx={{
           p: 3,
-          backgroundColor: scrolled ? 'auto' : 'transparent',
+          backgroundColor: scrolled ? 'background.item' : 'transparent',
           boxShadow: scrolled ? 'auto' : 'none',
           transition: 'all 0.3s ease-in-out',
+          display: 'flex',
+          width: '100%',
+          justifyContent: 'space-between',
+          borderRadius: '12px',
         }}
       >
         <Logo />
-      </Box>
-      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-        <ThemeSwitch />
-        <Button
-          endIcon={
-            <Iconify
-              sx={{ mr: 2 }}
-              icon='solar:add-square-line-duotone'
-              width={24}
-              height={24}
-            />
-          }
-          variant='contained'
-        >
-          {t('addNew')}
-        </Button>
+
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+          <ThemeSwitch />
+          <Button
+            endIcon={
+              <Iconify
+                sx={{ mr: 2 }}
+                icon='solar:add-square-line-duotone'
+                width={24}
+                height={24}
+              />
+            }
+            variant='contained'
+          >
+            {t('addNew')}
+          </Button>
+        </Box>
       </Box>
     </Box>
   );

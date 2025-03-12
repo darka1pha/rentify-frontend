@@ -35,6 +35,7 @@ export const light: boolean | ColorSystemOptions | undefined = {
     text: {
       primary: '#000000',
       secondary: '#5c5c5c',
+      gray: '#353739',
     },
   },
 };
