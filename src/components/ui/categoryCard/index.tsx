@@ -14,8 +14,8 @@ const CategoryCard = ({
   propertyCount,
 }: CategoryCardProps) => {
   return (
-    <Card className='p-0 aspect-[3/4] w-full max-h-[376px] relative group overflow-hidden'>
-      <div className='relative h-full w-full transition-all'>
+    <Card className='p-0 aspect-[3/4] w-full max-h-[376px] relative overflow-hidden'>
+      <div className='relative h-full w-full'>
         <Image
           src={imageSrc}
           alt={title}

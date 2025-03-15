@@ -1,26 +1,23 @@
-import { PropertyCard } from '@/components/ui';
-import { Button, Typography } from '@mui/material';
+import { PropertyCard, SectionHeader } from '@/components/ui';
+import { getProprties } from '@/lib/services/properties';
+import { getTranslations } from 'next-intl/server';
 
-const MostViewed = () => {
+const MostViewed = async () => {
+  const t = await getTranslations('home');
+  const properties = await getProprties();
+
+  console.log(properties);
+
   return (
     <div className='px-5 md:px-10 xl:px-24'>
-      <div className='flex justify-between items-center mb-8'>
-        <Typography
-          variant='h3'
-          fontSize={32}
-          fontWeight={'bold'}
-        >
-          پر بازدید ترین‌های هفته‌ی گذشته
-        </Typography>
-        <Button>مشاهده همه</Button>
-      </div>
+      <SectionHeader title={t('mostViewed')} />
       <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-5'>
-        <PropertyCard />
-        <PropertyCard />
-        <PropertyCard />
-        <PropertyCard />
-        <PropertyCard />
-        <PropertyCard />
+        {properties.map((property) => (
+          <PropertyCard
+            key={property.id}
+            {...property}
+          />
+        ))}
       </div>
     </div>
   );
