@@ -25,7 +25,7 @@ export type Property = {
   city: { name: string };
   facilities: Facility[];
   likedBy: { id: string }[];
-  media: { fileUrl: string }[];
+  media: string[];
   isLiked: boolean;
 };
 

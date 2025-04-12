@@ -21,7 +21,7 @@ const PropertyCard = ({
       <Paper className='aspect-[288/355] w-full flex flex-col justify-end overflow-hidden group'>
         <div className='relative flex-1 group-hover:scale-105 transition-all'>
           <Image
-            src={'/test.png'}
+            src={media.length > 0 ? media[0] : '/test.png'}
             fill
             alt='image'
             className='object-cover'
