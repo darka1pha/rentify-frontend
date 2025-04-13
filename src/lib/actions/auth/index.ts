@@ -1,8 +1,8 @@
 'use server';
-import { fetcher } from '@/lib/fetcher';
-import { API } from '../urls';
+import { API } from '../../urls';
 import { signUpSchemaType } from '@/components/auth/signup/schema';
 import { UserType } from '@/lib/constants';
+import { fetcher } from '@/lib/utils';
 import { redirect } from 'next/navigation';
 export async function refreshAccessToken(): Promise<boolean> {
   try {

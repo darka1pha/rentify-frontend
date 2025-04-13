@@ -1,7 +1,7 @@
+import { API } from '@/lib/urls';
 import { redirect } from 'next/navigation';
-import { API } from '../services/urls';
 
-export async function fetcher<T>(
+export default async function fetcher<T>(
   path: string,
   options: RequestInit & { multipart?: boolean } = {},
   retry = true // Controls whether to retry after a 401

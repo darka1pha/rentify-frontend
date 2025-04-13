@@ -1,12 +1,15 @@
 'use client';
 
 import { useScroll, useMotionValueEvent } from 'motion/react';
-import { Box, Button, Paper } from '@mui/material';
+import { Box, Button } from '@mui/material';
 import { useState } from 'react';
 import { Iconify, Logo, ThemeSwitch } from '@/components/ui';
 import { useTranslations } from 'next-intl';
+import Link from 'next/link';
+import { User } from '@/types/user';
+import { APP_URLS } from '@/lib/urls';
 
-const Navbar = () => {
+const Navbar = ({ user }: { user: User | null }) => {
   const { scrollY } = useScroll();
   const [scrolled, setScrolled] = useState(false);
   const t = useTranslations('home');
@@ -34,17 +37,21 @@ const Navbar = () => {
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
           <ThemeSwitch />
           <Button
+            LinkComponent={Link}
+            href={user ? APP_URLS.NEW_PROPERTIY : APP_URLS.SIGNUP}
             endIcon={
-              <Iconify
-                sx={{ mr: 2 }}
-                icon='solar:add-square-line-duotone'
-                width={24}
-                height={24}
-              />
+              user && (
+                <Iconify
+                  sx={{ mr: 2 }}
+                  icon='solar:add-square-line-duotone'
+                  width={24}
+                  height={24}
+                />
+              )
             }
             variant='contained'
           >
-            {t('addNew')}
+            {user ? t('addNew') : t('signin')}
           </Button>
         </Box>
       </Box>

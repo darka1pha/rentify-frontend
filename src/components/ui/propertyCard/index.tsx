@@ -15,9 +15,8 @@ const PropertyCard = ({
   address,
   propertyType,
 }: Property) => {
-  console.log(media);
   return (
-    <Link href={`/properties/${1}`}>
+    <Link href={`/properties/${id}`}>
       <Paper className='aspect-[288/355] w-full flex flex-col justify-end overflow-hidden group'>
         <div className='relative flex-1 group-hover:scale-105 transition-all'>
           <Image

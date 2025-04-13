@@ -40,16 +40,10 @@ const CategoryCard = ({
             <Typography
               variant='h6'
               fontSize={16}
-              color='white'
             >
               {title}
             </Typography>
-            <Typography
-              variant='body2'
-              color='white'
-            >
-              +{propertyCount} ملک
-            </Typography>
+            <Typography variant='body2'>+{propertyCount} ملک</Typography>
           </div>
           <IconButton color='primary'>
             <Iconify

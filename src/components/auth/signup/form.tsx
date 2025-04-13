@@ -7,11 +7,11 @@ import { Alert, InputAdornment, TextField } from '@mui/material';
 import { Iconify } from '@/components/ui';
 import { UserType } from '@/lib/constants';
 import RHFSubmitButton from '@/components/ui/RHFSubmitButton';
-import { signup } from '@/lib/services/auth';
-import { useState } from 'react';
-import { motion } from 'motion/react';
+import { signup } from '@/lib/actions/auth';
+import { useEffect, useState } from 'react';
+import { AnimatePresence, motion } from 'motion/react';
 
-const Form = () => {
+const Form = ({ userType }: { userType: UserType }) => {
   const t = useTranslations('auth');
   const [error, setError] = useState('');
   const methods = useForm<signUpSchemaType>({
@@ -22,14 +22,19 @@ const Form = () => {
     register,
     formState: { errors },
     handleSubmit,
+    setValue,
   } = methods;
 
   const onSubmit = async (data: signUpSchemaType) => {
-    const response = await signup({ ...data, type: UserType.CUSTOMER });
+    const response = await signup({ ...data, type: userType });
     if (!response.success) {
       setError(response.message);
     }
   };
+
+  useEffect(() => {
+    setValue('userType', userType);
+  }, [userType]);
 
   return (
     <FormProvider {...methods}>
@@ -157,6 +162,36 @@ const Form = () => {
             },
           }}
         />
+        <AnimatePresence mode='wait'>
+          {userType === UserType.AGENCY && (
+            <motion.div
+              key='agency-input'
+              initial={{ opacity: 0, width: 0 }}
+              animate={{ opacity: 1, width: '100%' }}
+              exit={{ opacity: 0, width: 0 }}
+              transition={{ duration: 0.3, ease: 'easeInOut' }}
+            >
+              <TextField
+                {...register('agency')}
+                label={t('signup.agency')}
+                variant='outlined'
+                error={!!errors.agency}
+                helperText={errors.agency?.message}
+                fullWidth
+                size='small'
+                slotProps={{
+                  input: {
+                    startAdornment: (
+                      <InputAdornment position='start'>
+                        <Iconify icon='solar:iphone-line-duotone' />
+                      </InputAdornment>
+                    ),
+                  },
+                }}
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         <RHFSubmitButton
           variant='outlined'

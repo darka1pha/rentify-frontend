@@ -2,6 +2,7 @@
 import { createTheme } from '@mui/material/styles';
 import { button, dark, light, outlinedInput, typography } from './configs';
 import { paper } from './configs/paper';
+import { tabs } from './configs/tabs';
 //#region Theme Overrides
 declare module '@mui/material/Button' {
   interface ButtonPropsSizeOverrides {
@@ -40,6 +41,7 @@ const theme = createTheme({
     MuiButton: button,
     MuiOutlinedInput: outlinedInput,
     MuiPaper: paper,
+    MuiTabs: tabs,
   },
 });
 
