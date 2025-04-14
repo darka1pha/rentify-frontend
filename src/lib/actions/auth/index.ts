@@ -44,6 +44,27 @@ export const signup = async (
   return response;
 };
 
+export const signin = async (formData: {
+  username: string;
+  password: string;
+}) => {
+  const response = await fetcher<{
+    accessToken: string;
+    message: string;
+    success: boolean;
+  }>(API.SIGNIN, {
+    method: 'POST',
+    body: JSON.stringify(formData),
+  });
+  if (response.success) {
+    // set access token
+    const { cookies } = await import('next/headers');
+    (await cookies()).set('access-token', response.accessToken);
+    redirect('/');
+  }
+  return response;
+};
+
 export async function removeAccessToken() {
   const { cookies } = await import('next/headers');
   (await cookies()).delete('access-token');

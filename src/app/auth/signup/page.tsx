@@ -1,5 +1,4 @@
-import { Form, SignupView } from '@/components/auth/signup';
-import { useTranslations } from 'next-intl';
+import { SignupView } from '@/components/auth/signup';
 
 const SignUp = () => {
   return <SignupView />;

@@ -3,13 +3,15 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslations } from 'next-intl';
 import { FormProvider, useForm } from 'react-hook-form';
 import { signupSchema, signUpSchemaType } from './schema';
-import { Alert, InputAdornment, TextField } from '@mui/material';
+import { Alert, InputAdornment, TextField, Typography } from '@mui/material';
 import { Iconify } from '@/components/ui';
 import { UserType } from '@/lib/constants';
 import RHFSubmitButton from '@/components/ui/RHFSubmitButton';
 import { signup } from '@/lib/actions/auth';
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
+import Link from 'next/link';
+import { APP_URLS } from '@/lib/urls';
 
 const Form = ({ userType }: { userType: UserType }) => {
   const t = useTranslations('auth');
@@ -48,7 +50,7 @@ const Form = ({ userType }: { userType: UserType }) => {
           <TextField
             className='col-span-1'
             {...register('name')}
-            label={t('signup.name')}
+            label={t('inputs.name')}
             variant='outlined'
             error={!!errors.name}
             helperText={errors.name?.message}
@@ -68,7 +70,7 @@ const Form = ({ userType }: { userType: UserType }) => {
           <TextField
             className='col-span-1'
             {...register('lastname')}
-            label={t('signup.lastname')}
+            label={t('inputs.lastname')}
             variant='outlined'
             error={!!errors.lastname}
             helperText={errors.lastname?.message}
@@ -88,7 +90,7 @@ const Form = ({ userType }: { userType: UserType }) => {
 
         <TextField
           {...register('email')}
-          label={t('signup.email')}
+          label={t('inputs.email')}
           variant='outlined'
           error={!!errors.email}
           helperText={errors.email?.message}
@@ -107,7 +109,7 @@ const Form = ({ userType }: { userType: UserType }) => {
 
         <TextField
           {...register('password')}
-          label={t('signup.password')}
+          label={t('inputs.password')}
           type='password'
           variant='outlined'
           error={!!errors.password}
@@ -127,7 +129,7 @@ const Form = ({ userType }: { userType: UserType }) => {
 
         <TextField
           {...register('username')}
-          label={t('signup.username')}
+          label={t('inputs.username')}
           variant='outlined'
           error={!!errors.username}
           helperText={errors.username?.message}
@@ -146,7 +148,7 @@ const Form = ({ userType }: { userType: UserType }) => {
 
         <TextField
           {...register('mobile')}
-          label={t('signup.mobile')}
+          label={t('inputs.mobile')}
           variant='outlined'
           error={!!errors.mobile}
           helperText={errors.mobile?.message}
@@ -173,7 +175,7 @@ const Form = ({ userType }: { userType: UserType }) => {
             >
               <TextField
                 {...register('agency')}
-                label={t('signup.agency')}
+                label={t('inputs.agency')}
                 variant='outlined'
                 error={!!errors.agency}
                 helperText={errors.agency?.message}
@@ -192,7 +194,17 @@ const Form = ({ userType }: { userType: UserType }) => {
             </motion.div>
           )}
         </AnimatePresence>
-
+        <div className='flex items-center gap-2'>
+          <Typography>{t('signup.haveAccount')}</Typography>
+          <Typography
+            color='primary'
+            className='underline'
+            component={Link}
+            href={APP_URLS.SIGNIN}
+          >
+            {t('signin.title')}
+          </Typography>
+        </div>
         <RHFSubmitButton
           variant='outlined'
           size='large'

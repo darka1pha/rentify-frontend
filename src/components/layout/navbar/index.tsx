@@ -8,6 +8,7 @@ import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { User } from '@/types/user';
 import { APP_URLS } from '@/lib/urls';
+import ProfileButton from './profileButton';
 
 const Navbar = ({ user }: { user: User | null }) => {
   const { scrollY } = useScroll();
@@ -36,6 +37,7 @@ const Navbar = ({ user }: { user: User | null }) => {
 
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
           <ThemeSwitch />
+          {user && <ProfileButton user={user} />}
           <Button
             LinkComponent={Link}
             href={user ? APP_URLS.NEW_PROPERTIY : APP_URLS.SIGNUP}
